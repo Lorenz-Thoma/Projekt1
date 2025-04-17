@@ -4,16 +4,29 @@ body {
   }
   
   .gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    max-height: 250px; /* Zeigt nur die erste Reihe (3 Bilder) */
-    overflow: hidden;
-    transition: max-height 0.5s ease;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px;
+    padding: 10px;
   }
   
   .gallery-container.expanded {
-    max-height: 2000px; /* Groß genug für alle Reihen */
+    display: grid;
+    /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/ /* Responsive Grid */
+    grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .gallery-container.expanded .image-box {
+    width: 200px;
+  }
+  
+  .gallery-container.expanded .image-box img {
+    height: auto;
+    width: 100%;
   }
   
   .image-box {
@@ -22,6 +35,8 @@ body {
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: center;
+    flex-shrink: 0;
+    width: 200px; /* fuer fixe breite*/
   }
   
   .image-box img {
