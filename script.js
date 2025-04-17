@@ -1,4 +1,9 @@
-document.querySelector(".red-button").addEventListener("click", () => {
-    alert("Du hast den roten Button gedrückt! 🔴");
-  });
-  
+const gallery = document.getElementById('gallery');
+    const button = document.querySelector('.expand-btn');
+    let expanded = false;
+
+    function toggleGallery() {
+      expanded = !expanded;
+      gallery.classList.toggle('expanded', expanded);
+      button.textContent = expanded ? 'Weniger anzeigen' : 'Erweitern';
+    }
