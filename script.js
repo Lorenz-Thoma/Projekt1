@@ -7,8 +7,10 @@ function toggleGallery() {
   gallery.classList.toggle('expanded', expanded);
   button.textContent = expanded ? 'Weniger anzeigen' : 'Erweitern';
 
-  sendHeight()
+  /*sendHeight()*/
 }
+
+window.onload = sendHeight();
 
 
 function sendHeight(){
