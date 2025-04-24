@@ -14,7 +14,8 @@ function toggleGallery() {
 function sendHeight(){
   const height = document.documentElement.scrollTop
   console.log(height)
-  alert("height: " + height)
+  let a = "abd"
+  alert("height: " + height + a)
   window.parent.postMessage({ type: 'setHeight', height }, '*');
 }
 
