@@ -10,36 +10,15 @@ function toggleGallery() {
   /*sendHeight()*/
 }
 
-window.onload = sendHeight();
+const element = document.getElementById('container');
 
+const resizeObserver = new ResizeObserver((entries) => {
+  for (let entry of entries) {
+    const { width, height } = entry.contentRect;
+    console.log(`Neue Größe: Breite = ${width}px, Höhe = ${height}px`);
 
-function sendHeight(){
-  const height = document.documentElement.scrollTop
-  console.log(height)
-  let a = "abd"
-  alert("height: " + height + a)
-  window.parent.postMessage({ type: 'setHeight', height }, '*');
-}
+    window.parent.postMessage({ type: 'setHeight', height}, '*');
+  }
+});
 
-
-/*function sendHeight() {
-  const height = document.body.scrollHeight;
-  window.parent.postMessage({ type: 'setHeight', height }, '*');
-}
-
-window.onload = sendHeight;
-window.addEventListener('resize', sendHeight);*/
-
-// Beispiel: Nachricht an die Hauptseite senden
-
-
-/*window.onload = function () {
-  const message = {
-    type: 'userData',
-    user: 'Anna',
-    age: 22
-  };
-
-  // Nachricht an das übergeordnete Fenster (die Wix-Seite) senden
-  window.parent.postMessage(message, '*'); // Du kannst statt '*' auch die exakte URL der Wix-Seite eintragen
-};*/
+resizeObserver.observe(element);
